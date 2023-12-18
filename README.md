@@ -1,0 +1,59 @@
+Chinook Database for the flavor SQLite
+
+The Chinook Database holds information about a music store. For this project, I used the infomation from the different tables to ask bussiness questions different bussiness questions
+
+Question 1
+Which countries have the most Invoices?
+
+I used the Invoice table to determine the countries that have the most invoices. Provided a table of BillingCountry and Invoices ordered by the number of invoices for each country.Then the country with the most invoices  appears first.
+
+
+/* Query 1 - query used for first insight */
+
+SELECT C.country,
+       SUM(I.total) AS Total_Spent
+FROM Invoice I
+JOIN Customer C ON I.CustomerId = C.CustomerId
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10;
+
+Question 2
+
+Which city has the best customers?
+
+This query will return the 1 city that has the highest sum of invoice totals. It will return both the city name and the sum of all invoice totals.
+
+/* Query 2 - query used for second insight */
+
+SELECT G.Name AS Genre,
+       COUNT(*) AS Tracks
+FROM Track T
+JOIN Genre G ON T.GenreId = G.GenreId
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 5;
+
+Question 3
+
+Who is the best customer?
+
+This query will return the customer who has spent the most money. 
+
+/* Query 3 - query used for third insight */
+
+SELECT E.EmployeeId,
+       E.FirstName,
+       E.LastName,
+       COUNT (*) AS Customers
+FROM Employee E
+JOIN Customer C ON E.EmployeeId = C.SupportRepId
+GROUP BY 1,
+         2,
+         3
+ORDER BY 4 DESC;
+/* Query 4 - query used for forth insight */
+
+
+SELECT STRFTIME('%Y', I.InvoiceDate) YEAR,
+                                     SUM(I.total) Sales
