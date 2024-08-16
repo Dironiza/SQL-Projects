@@ -2,7 +2,7 @@
 Question 1
 Which countries have the most Invoices?
 
-I used the Invoice table to determine the countries that have the most invoices. Provided a table of BillingCountry and Invoices ordered by the number of invoices for each country.Then the country with the most invoices  appears first.
+I used the Invoice table to determine the countries that have the most invoices. Provided a table of BillingCountry and Invoices ordered by the number of invoices for each country. Then the country with the most invoices  appears first.
 
 
 /* Query 1 - query used for first insight */
